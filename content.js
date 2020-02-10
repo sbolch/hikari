@@ -1,5 +1,1 @@
-window.addEventListener('mouseup', () => {
-    chrome.runtime.sendMessage({
-        text: window.getSelection().toString().trim()
-    });
-});
+window.addEventListener('mouseup', () => chrome.runtime.sendMessage({ text: window.getSelection().toString().trim() }));

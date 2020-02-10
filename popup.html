@@ -3,10 +3,17 @@
 <head>
     <meta charset="utf-16">
     <title>光</title>
-    <script src="main.js" type="text/javascript" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="loader.css">
+    <script src="vendor/kuroshiro.min.js"></script>
+    <script src="vendor/kuroshiro-analyzer-kuromoji.min.js"></script>
+    <script src="main.js" defer></script>
 </head>
 <body>
-    <h1 id="text"></h1>
-    <p id="description"></p>
+    <div id="cont">
+        <span id="loader" style="display: none;"><i></i><i></i><i></i><i></i></span>
+        <h1 id="kanji" lang="ja"></h1>
+        <p id="kana" lang="ja"></p>
+    </div>
 </body>
 </html>
