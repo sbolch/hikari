@@ -1,0 +1,1 @@
+Dictionaries in *dict* directory are imported from the [kuromoji.js](https://github.com/takuyaa/kuromoji.js/tree/master/dict) project.

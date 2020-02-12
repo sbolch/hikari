@@ -1,0 +1,13 @@
+#cont {
+    font-size: 14px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 1.25em;
+}
+
+h1, p {
+    margin: 0;
+    word-break: keep-all;
+}
