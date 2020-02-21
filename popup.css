@@ -1,13 +1,28 @@
-#cont {
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     font-size: 14px;
+    min-width: 10rem;
     text-align: center;
 }
 
-h1 {
-    font-size: 1.25em;
+#text {
+    font-size: 2em;
+    white-space: nowrap;
+    word-break: keep-all;
 }
 
-h1, p {
+ruby, ruby span, ruby rt {
     margin: 0;
     word-break: keep-all;
+}
+
+#meaning {
+    display: block;
+}
+
+#error {
+    margin: 0;
 }
