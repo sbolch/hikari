@@ -32,9 +32,21 @@ async function getResult(string) {
                         }
                     }
 
-                    text.innerHTML += `<ruby lang="ja">${chars[i]}<rt>${kana}</rt></ruby>`;
+                    let ruby = document.createElement('ruby');
+                    ruby.setAttribute('lang', 'ja');
+                    ruby.textContent = chars[i];
+
+                    let rt = document.createElement('rt');
+                    rt.textContent = kana;
+
+                    ruby.appendChild(rt);
+
+                    text.appendChild(ruby);
                 } else {
-                    text.innerHTML += chars[i];
+                    let span = document.createElement('span');
+                    span.textContent = chars[i];
+
+                    text.appendChild(span);
                 }
             }
 
@@ -42,15 +54,15 @@ async function getResult(string) {
             xhr.onreadystatechange = function() {
                 if(this.readyState === 4 && this.status === 200) {
                     let response = JSON.parse(this.responseText);
-                    meaning.innerHTML = response.data[0].senses[0].english_definitions[0];
+                    meaning.textContent = response.data[0].senses[0].english_definitions[0];
                 }
             };
             xhr.open('GET', 'https://jisho.org/api/v1/search/words?keyword=' + string, true);
             xhr.send();
         } else {
-            error.innerHTML = 'No kanji is selected.';
+            error.textContent = 'No kanji is selected.';
         }
     } else {
-        error.innerHTML = 'No kanji is selected.';
+        error.textContent = 'No kanji is selected.';
     }
 }

@@ -1,6 +1,6 @@
 {
     "name": "Hikari",
-    "version": "0.9",
+    "version": "0.9.1",
     "description": "Find the spelling and meaning of a kanji with a click.",
     "permissions": ["activeTab", "*://jisho.org/*"],
     "browser_action": {
