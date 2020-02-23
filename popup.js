@@ -10,11 +10,10 @@ chrome.tabs.executeScript({
 
 async function getResult(string) {
     if(string.length > 0) {
-        loader.style.display = 'block';
-
         await kuroshiro.init(new KuromojiAnalyzer({ dictPath: 'dict' }));
 
         if(Kuroshiro.Util.hasKanji(string)) {
+            let jishoResponse = await (await fetch('https://jisho.org/api/v1/search/words?keyword=' + string)).json();
             let chars = string.split('');
 
             for(let i = 0; i < chars.length; i++) {
@@ -50,15 +49,7 @@ async function getResult(string) {
                 }
             }
 
-            let xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if(this.readyState === 4 && this.status === 200) {
-                    let response = JSON.parse(this.responseText);
-                    meaning.textContent = response.data[0].senses[0].english_definitions[0];
-                }
-            };
-            xhr.open('GET', 'https://jisho.org/api/v1/search/words?keyword=' + string, true);
-            xhr.send();
+            meaning.textContent = jishoResponse.data[0].senses[0].english_definitions[0];
         } else {
             error.textContent = 'No kanji is selected.';
         }
